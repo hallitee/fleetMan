@@ -5,6 +5,7 @@ use App\req;
 use App\User;
 use App\Carmaster;
 use App\Driver;
+use App\renewalMaster;
 use App\department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +16,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 
 Auth::routes();
+Route::get('/load/renewal', function (Request $req){
+			$d = renewalMaster::where('id', $req->id)->get();
+			return response()->json($d);		
+});
 Route::get('/load/dept', function (Request $req){
 			$d = department::where('comp_id', $req->id)->get();
 			return response()->json($d);		
@@ -210,6 +215,7 @@ Route::get('logout', function(){
 Route::resource('reserve', 'RequestController', ['parameters'=>['reserve'=>'id']]);
 Route::resource('company', 'CompanyController', ['parameters'=>['company'=>'id']]);
 Route::resource('dept', 'DepartmentController', ['parameters'=>['dept'=>'id']]);
+Route::resource('renewals', 'RenewalRecordController', ['parameters'=>['renewals'=>'id']]);
 Route::resource('renewal', 'RenewalMasterController', ['parameters'=>['renewal'=>'id']]);
 Route::resource('fleet', 'FleetController', ['parameters'=>['fleet'=>'id']]);
 Route::get('/', function(){	

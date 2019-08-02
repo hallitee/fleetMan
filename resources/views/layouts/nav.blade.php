@@ -31,6 +31,14 @@
         </li>
 
 		@if(Auth::user())
+		@if(Auth::user()->role==1)
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="New Car Request">
+          <a class="nav-link" href="{{ url('/trip/stat') }}">
+            <i class="fa fa-fw fa-edit"></i>
+            <span class="nav-link-text">Manage Trip </span>
+          </a>
+        </li>		
+		@endif
 		@if(Auth::user()->role>2)
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
           <a class="nav-link" href="{{ url('/dashboard') }}">
@@ -45,30 +53,20 @@
             <span class="nav-link-text">View Request</span>
           </a>
         </li>  
-		@endif
-		@if(Auth::user()->role==1)
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="New Car Request">
-          <a class="nav-link" href="{{ url('/trip/stat') }}">
-            <i class="fa fa-fw fa-edit"></i>
-            <span class="nav-link-text">Manage Trip </span>
-          </a>
-        </li>		
-		@endif
-		@if(Auth::user()->role>=3)
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Master Record</span>
+            <i class="fa fa-fw fa-car"></i>
+            <span class="nav-link-text">Fleet management</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
 		 	<li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti1">Company</a>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti1"><i class="fa fa-fw fa-bell"></i>Renewal</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti1">
                 <li>
-                  <a href="{{ route('company.create') }}">New Company</a>
+                  <a href="{{ route('renewals.create') }}"><i class="fa fa-fw fa-circle-o"></i>Add renewals</a>
                 </li>
                 <li>
-                  <a href="{{ route('company.index') }}">Manage company</a>
+                  <a href="{{ route('renewals.index') }}"><i class="fa fa-fw fa-circle-o"></i>Renewals List</a>
                 </li>
               </ul>
             </li>
@@ -83,7 +81,6 @@
                 </li>
               </ul>
             </li>
-
 			<li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti3">Fleet</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti3">
@@ -106,28 +103,70 @@
                 </li>
               </ul>
             </li>			
-			<li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti5">Fourth Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti5">
+          </ul>        
+        </li>	
+		@endif
+
+		@if(Auth::user()->role>=3)
+		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponent" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench"></i>
+            <span class="nav-link-text">Master</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponent">
+		 	<li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMult1">Company</a>
+              <ul class="sidenav-third-level collapse" id="collapseMult1">
                 <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="{{ route('company.create') }}">New Company</a>
                 </li>
                 <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="{{ route('company.index') }}">Manage company</a>
                 </li>
               </ul>
             </li>
-          </ul>
+		 	<li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMult2">Department/Group</a>
+              <ul class="sidenav-third-level collapse" id="collapseMult2">
+                <li>
+                  <a href="{{  route('dept.create') }}">New Department</a>
+                </li>
+                <li>
+                  <a href="{{ route('dept.index') }}">Manage Department</a>
+                </li>
+              </ul>
+            </li>
 
-          </ul>	  
+			<li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMult3">Fleet</a>
+              <ul class="sidenav-third-level collapse" id="collapseMult3">
+                <li>
+                  <a href="{{ route('fleet.create') }}">Add New Fleet</a>
+                </li>
+                <li>
+                  <a href="{{ route('fleet.index') }}">Manage Fleet</a>
+                </li>
+              </ul>
+            </li>
+			<li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMult4">Renewals</a>
+              <ul class="sidenav-third-level collapse" id="collapseMult4">
+                <li>
+                  <a href="{{ route('renewal.create') }}">Add New Renewal</a>
+                </li>
+                <li>
+                  <a href="{{ route('renewal.index') }}">Manage Renewal</a>
+                </li>
+              </ul>
+            </li>			
+
+          </ul> 
         </li>			
 		@endif
 		 @endif
-      </ul>  
-	  <ul class="navbar-nav sidenav-toggler">
+      </ul>
+  
+		<ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
             <i class="fa fa-fw fa-angle-left"></i>

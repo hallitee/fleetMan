@@ -64,7 +64,7 @@ class RenewalMasterController extends Controller
 					$r->issuerAddress = $req->issuerAdd;
 					$r->contactName =   $req->contact;
 					$r->contactNum = $req->contact ;
-					$r->frequency = $req->freq;
+					//$r->frequency = $req->freq;
 					$r->validity =  $req->validity;
 					$r->valid_uom =   $req->uom;
 					$r->status = 1;
@@ -127,7 +127,7 @@ class RenewalMasterController extends Controller
 					$r->issuerAddress = $req->issuerAdd;
 					$r->contactName =   $req->contact;
 					$r->contactNum = $req->contact ;
-					$r->frequency = $req->freq;
+					//$r->frequency = $req->freq;
 					$r->validity =  $req->validity;
 					$r->save();
 					

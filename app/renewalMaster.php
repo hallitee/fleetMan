@@ -20,5 +20,8 @@ class renewalMaster extends Model
 										});
 	}
 	
-	
+	public function renewals(){		
+		return $this->hasMany('App\renewal_record', 'id', 'renewal_id');
+	}
+		
 }

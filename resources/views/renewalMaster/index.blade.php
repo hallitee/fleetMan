@@ -76,16 +76,12 @@
 									
 					 </div> 						 
 					<div class="form-row">
-						<div class="form-group col-md-6">
-						  <label for="inputEmail4">Renewal Frequency</label>
-						  {{ Form::select('freq',config('app.frequency'),"",array('class' => 'input-md form-control','placeholder'=>'Select Renewal Frequency', 'required')) }} 
-						</div>
-						<div class="form-group col-md-6">
-						<label for="inputPassword4">Validity</label>	
+						<div class="form-group col-md-12">
+						<label for="inputPassword4">Validity *</label>	
 						<div class="input-group">
-						  <input type="number" name="validity" class="form-control" placeholder="Enter validity period" aria-label="Vehicle cost" aria-describedby="basic-addon2">
+						  <input type="number" name="validity" required class="form-control" placeholder="Enter validity period" aria-label="Vehicle cost" aria-describedby="basic-addon2">
 						  <div class="input-group-append">
-							<span class="input-group-text" id="basic-addon2">{{ Form::select('uom',config('app.uom'),"", array('id'=>'uomSel','data-uom')) }} </span>
+							<span class="input-group-text" id="basic-addon2">{{ Form::select('uom',config('app.uom'),"", array('id'=>'uomSel','data-uom','required')) }} </span>
 						  </div>
 						</div>
 						</div>					

@@ -94,6 +94,9 @@
 
 
  <div class="content-wrapper">
+			<div id="dispWarning" class="alert alert-warning" style="display:none">
+			
+			</div>
 			@if ($errors->any())
 				<div class="alert alert-danger">
 					<ul>
@@ -157,6 +160,7 @@
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
     <!-- Custom scripts for this page-->
     <script src="{{ asset('js/sb-admin-datatables.min.js') }}"></script>
+   <script src="{{ asset('js/moment.min.js') }}"></script>	
 	@yield('js')
   </div>
 </body>

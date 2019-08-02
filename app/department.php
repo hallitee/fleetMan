@@ -21,5 +21,9 @@ class department extends Model
 		
 		return $this->belongsTo('App\Company','comp_id');
 	}
-	
+		public function fleets(){
+		
+		return $this->hasMany('App\fleet', 'dept_id', 'id');
+		
+	}
 }

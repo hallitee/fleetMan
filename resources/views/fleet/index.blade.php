@@ -17,9 +17,10 @@
 				//	console.log("error on submit"+xhr);
 					},
 					success: function( data ){ 
+					console.log(data);
 				  const dept =  document.getElementById('selDept');
 				  dept.remove(dept.children);
-				  data.forEach((num)=>{
+				  data.forEach(function(num){
 					 let opt = document.createElement('Option'); 
 					 opt.value = num.id;
 					 opt.innerText = num.name;
