@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-10 offset-1">
 			<div class="card col-md-10 offset-1">
-				<div class="card-header"><h4 class="text-center">Edit Fleet Profile</h4></div>
+				<div class="card-header"><h4 class="text-center">Edit Renewal Record</h4></div>
 				
 				<div class="card-body">
 	   
@@ -55,7 +55,7 @@
 					 </div> 					 
 					<div class="form-row">
 						<div class="form-group col-md-4">
-						  <label>Renewal Start Date *</label>
+						  <label>Valid From *</label>
 						  {{ Form::date('payDate',"",array('class' => 'input-md form-control','placeholder'=>'Enter payment date', 'id'=>'payDate', 'required')) }} 
 						</div>
 						<div class="form-group col-md-4">

@@ -47,7 +47,7 @@
               <div class="col-md-12">
                 <label for="exampleInputLastName">Company Name *</label>
 			
-               	{{ Form::select('compName',$arr,[$comp->company->id=>$comp->company->name.' '.$comp->company->location],array('class' => 'input-md form-control','required', 'placeholder'=>'Select a company')) }} 
+               	{{ Form::select('compName',$arr,[$comp->company->id],array('class' => 'input-md form-control','required', 'placeholder'=>'Select a company')) }} 
               </div>
             </div>
           </div>			  

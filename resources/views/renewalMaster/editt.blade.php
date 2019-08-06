@@ -30,7 +30,7 @@
       <div class="row">
         <div class="col-10 offset-1">
 			<div class="card col-md-10 offset-1">
-				<div class="card-header"><h4 class="text-center">Edit Fleet Profile</h4></div>
+				<div class="card-header"><h4 class="text-center">Edit Renewal Master</h4></div>
 				
 				<div class="card-body">
 		{!! Form::open(['action' => array('RenewalMasterController@update', $app->id),'method'=>'PUT']) !!}
@@ -68,11 +68,11 @@
 					 </div> 		
 					<div class="form-row">
 						<div class="form-group col-md-12">
-						<label for="inputPassword4">Validity *</label>	
+						<label for="inputPassword4">Validity Period*</label>	
 						<div class="input-group">
 						  <input type="number" name="validity" value="{{$app->validity }}" required class="form-control" placeholder="Enter validity period" aria-label="Vehicle cost" aria-describedby="basic-addon2">
 						  <div class="input-group-append">
-							<span class="input-group-text" id="basic-addon2">{{ Form::select('uom',config('app.uom'),$app->valid_uom, array('id'=>'uomSel','data-uom','required')) }} </span>
+							<span class="input-group-text" id="basic-addon2">{{ Form::select('uom',(($app->validity>1)? config('app.uoms'):config('app.uom')),[$app->valid_uom], array('id'=>'uomSel','data-uom','required')) }} </span>
 						  </div>
 						</div>
 						</div>					

@@ -59,7 +59,7 @@
 					 </div> 					 
 					<div class="form-row">
 						<div class="form-group col-md-4">
-						  <label>Renewal Start Date *</label>
+						  <label>Valid From *</label>
 						  {{ Form::date('payDate',"",array('class' => 'input-md form-control','placeholder'=>'Enter payment date', 'id'=>'payDate', 'required')) }} 
 						</div>
 						<div class="form-group col-md-4">

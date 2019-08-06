@@ -36,11 +36,12 @@
 				  <th>Model</th>
 				  <th>Reg. No</th>
                   <th>Renewal</th>
-                  <th>Validity</th>
-                  <th>Last Sub</th>
+                  <th>Validity Period</th>
+                  <th>Valid From</th>
 				  <th>Next Date</th>
 				  <th>Cost</th>
-				  <th>{{ ((Auth::user()->role>=3)? "Edit" : "View" )}}</th>
+				  <th>Action</th>
+				  @if(Auth::user()->role>=4)<th>Edit</th>@endif
 				  @if(Auth::user()->role>=4)
                   <th>Delete</th>			
 				  @endif			  
@@ -60,12 +61,23 @@
 						  <td>{{$l->renewmaster->validity.' '.$l->renewmaster->valid_uom }}</td>     
 						  <td>{{$l->lastSub}}</td>
 						  <td>{{ $l->nextSub }}</td>    
-							<td>{{ $l->renewalCost }}</td>   
-						  @if(Auth::user()->role>=3)
-						   <td><a href="{{ route('renewals.edit', $l->id) }}"><button class="btn btn-sm btn-info">Edit</button></a></td>
-							@else
-							<td><a href="{{ route('renewals.show', $l->id) }}"><button class="btn btn-sm btn-info">View</button></a></td>	
-							
+							<td>{{ $l->renewalCost }}</td> 
+							<td class="text-center">@php 
+								if($l->notSent=='0'){									
+									echo "<strong class='text-success text-center'>  Active </strong>";
+								}
+								else if($l->notSent=='5'){
+								echo "<a href=".route('renewal.activate', ['id'=>$l->id])."><button class='btn btn-sm btn-warning'>Renew</button></a>";							
+								}
+								else if($l->notSent=='9'){
+									echo "<strong class='text-danger text-center'>  Expired </strong>";
+								}
+								else{
+									echo "<strong class='text-primary text-center'>  Completed </strong>";
+								}
+								@endphp</td> 							
+							@if(Auth::user()->role>=4)
+						   <td><a href="{{ route('renewals.edit', $l->id) }}"><button class="btn btn-lg btn-info">Edit</button></a></td>						
 							@endif
 						  @if(Auth::user()->role>=4)
 							<td>

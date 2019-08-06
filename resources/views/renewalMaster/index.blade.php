@@ -37,7 +37,7 @@
 				   
 
 			
-				<div class="card-header"><h4 class="text-center">Create Renewal</h4></div>
+				<div class="card-header"><h4 class="text-center">Create Renewal Master</h4></div>
 				
 				<div class="card-body">
        {{ Form::open(['action' => array('RenewalMasterController@store'),'id'=>'renewMasterStore', 'name'=>'renewMasterSave']) }}
@@ -77,7 +77,7 @@
 					 </div> 						 
 					<div class="form-row">
 						<div class="form-group col-md-12">
-						<label for="inputPassword4">Validity *</label>	
+						<label for="inputPassword4">Validity Period*</label>	
 						<div class="input-group">
 						  <input type="number" name="validity" required class="form-control" placeholder="Enter validity period" aria-label="Vehicle cost" aria-describedby="basic-addon2">
 						  <div class="input-group-append">

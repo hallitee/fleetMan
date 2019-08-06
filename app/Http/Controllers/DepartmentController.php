@@ -99,6 +99,7 @@ class DepartmentController extends Controller
      */
     public function edit(Request $req)
     {
+		$dept = department::find($req->id);
 		$comp  = Company::get();
 		$arr = array();
 		foreach($comp as $c){

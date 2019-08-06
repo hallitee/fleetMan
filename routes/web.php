@@ -216,6 +216,7 @@ Route::resource('reserve', 'RequestController', ['parameters'=>['reserve'=>'id']
 Route::resource('company', 'CompanyController', ['parameters'=>['company'=>'id']]);
 Route::resource('dept', 'DepartmentController', ['parameters'=>['dept'=>'id']]);
 Route::resource('renewals', 'RenewalRecordController', ['parameters'=>['renewals'=>'id']]);
+Route::get('renewal/activate', 'RenewalRecordController@activate')->name('renewal.activate');
 Route::resource('renewal', 'RenewalMasterController', ['parameters'=>['renewal'=>'id']]);
 Route::resource('fleet', 'FleetController', ['parameters'=>['fleet'=>'id']]);
 Route::get('/', function(){	

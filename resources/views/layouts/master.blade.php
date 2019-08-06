@@ -83,6 +83,7 @@
   <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/datepicker.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -161,6 +162,7 @@
     <!-- Custom scripts for this page-->
     <script src="{{ asset('js/sb-admin-datatables.min.js') }}"></script>
    <script src="{{ asset('js/moment.min.js') }}"></script>	
+      <script src="{{ asset('js/datepicker.min.js') }}"></script>	
 	@yield('js')
   </div>
 </body>

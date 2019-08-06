@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use App\renewal_record;
+use App\renewalMaster;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -17,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     Schema::defaultStringLength(191);
+	
+	
+    view()->share('data', [1, 2, 3]);
+
 	}
 
     /**

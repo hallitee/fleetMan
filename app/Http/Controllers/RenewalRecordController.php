@@ -29,7 +29,8 @@ class RenewalRecordController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+
+    {
     public function create()
     {
         //
@@ -162,6 +163,24 @@ class RenewalRecordController extends Controller
 		return view('renewalrecords.editt')->with(['fleet'=>$arr, 'renew'=>$brr,'app'=>$ren]);
     }
 
+
+   
+   public function activate(Request $req){
+			 
+		$ren = renewal_record::with(['fleet', 'renewmaster'])->find($req->id);
+		$f = fleet::get();
+		$r = renewalMaster::get();
+		$arr = [];
+		$brr = [];
+		foreach($f as $a){
+			$arr[$a->id] = $a->make.' '.$a->model.' '.$a->regNo;
+		}
+		foreach($r as $b){			
+			$brr[$b->id] = $b->name. ' '.$b->issuer;
+		}
+			
+		return view('renewalrecords.edit')->with(['fleet'=>$arr, 'renew'=>$brr,'app'=>$ren]);
+		 }
     /**
      * Update the specified resource in storage.
      *
@@ -172,7 +191,7 @@ class RenewalRecordController extends Controller
     public function update(Request $req)
     {
         //
-		
+		return $req;
 			$validator = Validator::make($req->all(), [
 			'fleetid' => 'required',
 			'renewal' => 'required',

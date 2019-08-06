@@ -183,12 +183,12 @@
 						</div>
 						<div class="form-group col-md-4">
 						  <label for="inputPassword4">Year (Manufacture) </label>
-						  {{  Form::selectYear('year', 1995, 2019,'2019',array('class' => 'input-md form-control', 'placeholder'=>'Enter car manufacture year')) }}
+						  {{  Form::selectYear('year', 2005, 2019,'2019',array('class' => 'input-md form-control', 'placeholder'=>'Enter car manufacture year')) }}
 						  
 						</div>
 						<div class="form-group col-md-4">
 						  <label for="inputPassword4">Registration Date *</label>
-						<input type="month" id='regDate' class="input-md form-control"  placeholder="date format: 2019-10" name="regDate" required>
+						<input type="month" data-toggle="datepicker" class="input-md form-control"  placeholder="date format: 2019-10" name="regDate" required>
 						</div>						
 					 </div> 					 
 					<div class="form-row">
