@@ -33,17 +33,17 @@
 				
 				<div class="card-body">
 	   
-		   {!! Form::open(['action' => array('RenewalRecordController@update', $app->id),'params'=>'renew','method'=>'PUT']) !!}
+		   {!! Form::open(['action' => array('RenewalRecordController@update', $app->id, 'action'=>'renew'),'method'=>'PUT']) !!}
 					<div class="form-row">
 						<div class="form-group col-md-12">
 						  <label for="inputEmail4">Fleet *</label>
-						  {{ Form::text('fleetid',$app->fleet->make.' '.$app->fleet->model.' '.$app->fleet->regNo,array('class' => 'input-md form-control', 'required', 'placeholder'=>'Enter renewal name ', 'readonly')) }} 
+						  {{ Form::select('fleetid',[$app->fleet->id=>$app->fleet->make.' '.$app->fleet->model.' '.$app->fleet->regNo],[$app->fleet->id],array('class' => 'input-md form-control', 'required', 'placeholder'=>'Enter renewal name ', 'readonly')) }} 
 						</div>
 					 </div> 
 					<div class="form-row">
 						<div class="form-group col-md-6">
 						  <label for="inputEmail4">Renewal Type</label>
-						  {{ Form::text('renewal',$app->renewmaster->name,array('class' => 'input-md form-control','placeholder'=>'Enter renewal type', 'readonly')) }} 
+						  {{ Form::select('renewal',[$app->renewmaster->id=>$app->renewmaster->name],[$app->renewmaster->id],array('class' => 'input-md form-control','placeholder'=>'Enter renewal type', 'readonly')) }} 
 						</div>	
 						<div class="form-group col-md-6">
 						  <label for="inputEmail4">Validity Period</label>
@@ -65,9 +65,9 @@
 						<div class="form-group col-md-4">
 						<label for="inputPassword4">Notification Span</label>	
 						<div class="input-group">
-						  <input type="text" name="notify" value="{{ $app->notType }}" id="notText" class="form-control">
+						  <input type="text" name="notify" value="{{ $app->notType }}" id="notText" class="form-control" required>
 						  <div class="input-group-append">
-							<span class="input-group-text" id="basic-addon2">{{ Form::select('notUom',[''=>'','Hour'=>'Hour','Day'=>'Day','Week'=>'Week'],$app->notFreq, array('id'=>'notUomSel')) }} </span>
+							<span class="input-group-text" id="basic-addon2">{{ Form::select('notUom',[''=>'','Hour'=>'Hour','Day'=>'Day','Week'=>'Week'],$app->notFreq, array('id'=>'notUomSel', 'required')) }} </span>
 						  </div>
 						  <div class="input-group-append">
 							<span class="input-group-text" id="basic-addon2">Before Expiry</span>

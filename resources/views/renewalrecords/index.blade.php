@@ -71,8 +71,8 @@
 						<label for="inputPassword4">Notification Span</label>	
 						<div class="input-group">
 						  <input type="text" name="notify" value="1" id="notText" class="form-control">
-						  <div class="input-group-append">
-							<span class="input-group-text" id="basic-addon2">{{ Form::select('notUom',[''=>'','Hour'=>'Hour','Day'=>'Day','Week'=>'Week'],"", array('id'=>'notUomSel')) }} </span>
+						  <div class="input-group-append" required>
+							<span class="input-group-text" id="basic-addon2">{{ Form::select('notUom',[''=>'','Hour'=>'Hour','Day'=>'Day','Week'=>'Week'],"", array('id'=>'notUomSel', 'required')) }} </span>
 						  </div>
 						  <div class="input-group-append">
 							<span class="input-group-text" id="basic-addon2">Before Expiry</span>

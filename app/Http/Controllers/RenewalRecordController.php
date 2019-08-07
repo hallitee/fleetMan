@@ -15,10 +15,25 @@ class RenewalRecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	 public function __construct(){
+	public function __construct(){
 		  return $this->middleware('auth');
 	 }
-    public function index()
+	public function create(){
+		$f = fleet::get();
+		$arr =[];
+		$brr=[];
+		foreach($f as $a){
+			$arr[$a->id]=$a->make.' '.$a->model.' '.$a->regNo;
+		}
+		$g = renewalMaster::get();
+		
+		foreach($g as $b){
+			$brr[$b->id] = $b->name;
+		}
+		
+		return view('renewalrecords.index')->with(['fleet'=>$arr,'renew'=>$brr]);		
+	}
+	public function index()
     {
         //
 		$r = renewal_record::with(['fleet', 'renewmaster'])->orderBy('nextSub', 'desc')->get();
@@ -162,8 +177,6 @@ class RenewalRecordController extends Controller
 			
 		return view('renewalrecords.editt')->with(['fleet'=>$arr, 'renew'=>$brr,'app'=>$ren]);
     }
-
-
    
    public function activate(Request $req){
 			 
@@ -191,7 +204,6 @@ class RenewalRecordController extends Controller
     public function update(Request $req)
     {
         //
-		return $req;
 			$validator = Validator::make($req->all(), [
 			'fleetid' => 'required',
 			'renewal' => 'required',
@@ -208,7 +220,64 @@ class RenewalRecordController extends Controller
 							->withErrors($validator)
 							->withInput();
 			}
-					
+			if($req->has('action')){
+			$r =  renewal_record::find($req->id);
+			$r->notSent = 10;
+			$r->save();			
+			$ren =  new renewal_record;
+		$ren->lastSub = $req->payDate;
+		$ren->nextSub = $req->nextDateH;
+		$ren->renewalCost = $req->renCost;
+		$ren->notType = $req->notify;
+		$ren->notFreq = $req->notUom;
+		if($req->has('notify')){
+			if($req->has('notUom')){
+				switch($req->notUom){
+					case "Hour":
+					case "Hours" :
+					break;
+					case "Day":
+					case "Days":{
+					$req->notify *= 24;
+					break;
+					}
+					case "Week":
+					case "Weeks":{
+						$req->notify*= (7*24);
+						break;						
+					}
+					case "Month":
+					case "Months":{
+						$req->notify*=(7*24*30);
+						break;						
+					}
+					case "Year":
+					case "Years" :{
+						$req->notify*= (24*7*52);
+						break;						
+					}
+
+			}
+				
+			}
+			else{
+				return redirect('renewals')->with(["status"=>"Error in form","alert"=>"danger"]);
+				
+			}
+			
+		}
+		$ren->notDate = $req->notify;
+		$ren->paidBy = $req->payee;
+		$ren->fleet_id = $req->fleetid;
+		$ren->renewal_id = $req->renewal;
+		$ren->notSent = 0;
+		$ren->status = 1;
+		$ren->save();
+			
+		return redirect('renewals')->with(["status"=>"Renewals created successfully","alert"=>"success"]);
+			
+		}
+						
 		
 		$ren =  renewal_record::find($req->id);
 		$ren->lastSub = $req->payDate;
@@ -216,8 +285,11 @@ class RenewalRecordController extends Controller
 		$ren->renewalCost = $req->renCost;
 		$ren->paidBy = $req->payee;
 		$ren->fleet_id = $req->fleetid;
-		$ren->renewal_id = $req->renewal;
+		$ren->notType = $req->notify;
+		$ren->notFreq = $req->notUom;		
+		$ren->renewal_id = $req->renewal;		
 		$ren->save();
+
 		return redirect('renewals')->with(["status"=>"Renewals updated successfully","alert"=>"success"]);
     }
 

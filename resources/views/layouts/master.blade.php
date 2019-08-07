@@ -95,9 +95,11 @@
 
 
  <div class="content-wrapper">
-			<div id="dispWarning" class="alert alert-warning" style="display:none">
 			
+			<div id="dispWarning" class="alert alert-warning" style="display:none">
+			<h5><marquee>A scrolling text created with HTML Marquee element.{{$data[0]}}</marquee></h5>
 			</div>
+	
 			@if ($errors->any())
 				<div class="alert alert-danger">
 					<ul>
@@ -160,9 +162,17 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin.min.js') }}"></script>
     <!-- Custom scripts for this page-->
+	
     <script src="{{ asset('js/sb-admin-datatables.min.js') }}"></script>
    <script src="{{ asset('js/moment.min.js') }}"></script>	
       <script src="{{ asset('js/datepicker.min.js') }}"></script>	
+	   <script>
+			
+					disp = {!!  $data !!}
+					console.log(" Master Activated script "); 
+			
+		</script>  
+
 	@yield('js')
   </div>
 </body>
