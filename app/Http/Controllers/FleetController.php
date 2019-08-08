@@ -6,6 +6,7 @@ use App\fleet;
 use App\department;
 use App\Company;
 use Validator;
+use App\Driver;
 use Illuminate\Http\Request;
 
 class FleetController extends Controller

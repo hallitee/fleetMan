@@ -23,7 +23,7 @@ class department extends Model
 	}
 		public function fleets(){
 		
-		return $this->hasMany('App\fleet', 'dept_id', 'id');
+		return $this->hasMany('App\fleet', 'dept', 'id');
 		
 	}
 }

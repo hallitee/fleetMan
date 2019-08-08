@@ -60,8 +60,19 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
 		 	<li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti1"><i class="fa fa-fw fa-bell"></i>Renewal</a>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti1"><i class="fa fa-fw fa-filter"></i>Fuel Record</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti1">
+                <li>
+                  <a href="{{ route('topup.create') }}"><i class="fa fa-fw fa-circle-o"></i>Add Fuel Record</a>
+                </li>
+                <li>
+                  <a href="{{ route('topup.index') }}"><i class="fa fa-fw fa-circle-o"></i>Fuelling List</a>
+                </li>
+              </ul>
+            </li>		  
+		 	<li>
+              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2"><i class="fa fa-fw fa-bell"></i>Renewal</a>
+              <ul class="sidenav-third-level collapse" id="collapseMulti2">
                 <li>
                   <a href="{{ route('renewals.create') }}"><i class="fa fa-fw fa-circle-o"></i>Add renewals</a>
                 </li>
@@ -70,6 +81,7 @@
                 </li>
               </ul>
             </li>
+			
 		 	<li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti5">Department/Group</a>
               <ul class="sidenav-third-level collapse" id="collapseMulti5">

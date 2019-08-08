@@ -215,6 +215,7 @@ Route::get('logout', function(){
 Route::resource('reserve', 'RequestController', ['parameters'=>['reserve'=>'id']]);
 Route::resource('company', 'CompanyController', ['parameters'=>['company'=>'id']]);
 Route::resource('dept', 'DepartmentController', ['parameters'=>['dept'=>'id']]);
+Route::resource('topup', 'FuellingController', ['parameters'=>['topup'=>'id']]);
 Route::resource('renewals', 'RenewalRecordController', ['parameters'=>['renewals'=>'id']]);
 Route::get('renewal/activate', 'RenewalRecordController@activate')->name('renewal.activate');
 Route::resource('renewal', 'RenewalMasterController', ['parameters'=>['renewal'=>'id']]);

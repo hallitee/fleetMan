@@ -129,6 +129,18 @@ return [
 	'Months'=>'Months',
 	'Years'=>'Years'	
 	],	
+	'stations'=>[
+	'CONOIL'=>'CONOIL',
+	'FORTE'=>'FORTE',
+	'MOBIL'=>'MOBIL',
+	'NNPC'=>'NNPC',
+	'OANDO'=>'OANDO',
+	'TOTAL'=>'TOTAL'	
+	],
+	'fuel'=>[
+	'DIESEL'=>'DIESEL',
+	'PETROL'=>'PETROL'
+	],
   /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -28,6 +28,9 @@ class fleet extends Model
 		return $this->belongsTo('App\department', 'dept', 'id');
 	}
 	public function renewals(){
-		return $this->hasMany('App\renewal_record', 'id', 'fleet_id');
+		return $this->hasMany('App\renewal_record', 'fleet_id', 'id');
 	}
+	public function fuellings(){
+		return $this->hasMany('App\fuelling', 'fleet_id', 'id');
+	}	
 }

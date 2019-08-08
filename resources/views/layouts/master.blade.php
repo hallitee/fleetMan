@@ -96,7 +96,7 @@
 
  <div class="content-wrapper">
 			
-			<div id="dispWarning" class="alert alert-warning" style="display:none">
+			<div id="dispWarning" class="alert alert-primary" style="display:none">
 			<h5><marquee>A scrolling text created with HTML Marquee element.{{$data[0]}}</marquee></h5>
 			</div>
 	
